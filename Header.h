@@ -19,6 +19,7 @@ public:
 
 };
 
+
 class Pacjent : public Osoba {
 	int pesel;
 	int nr_karty_pacjenta;
