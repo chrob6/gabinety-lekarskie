@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+// czy natce dziala
+
 using namespace std;
 
 class Osoba {
