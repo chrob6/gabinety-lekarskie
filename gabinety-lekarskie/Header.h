@@ -66,3 +66,4 @@ class Obsluga: public Osoba {
 		: Osoba(Im, Naz, adr, nr_t) {}
 
 };
+
