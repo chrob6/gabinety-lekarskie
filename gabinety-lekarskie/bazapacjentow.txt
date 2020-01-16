@@ -1,0 +1,8 @@
+123
+Marcin
+Krobak
+string
+997
+1234
+Klaudia	Baran	niepodamci	345	123
+Grzegorz	Cebula	asd	123	

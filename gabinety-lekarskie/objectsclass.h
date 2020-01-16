@@ -9,6 +9,7 @@ class Data {
 	int rok;
 	int godzina;
 	int minuta;
+
 };
 
 
@@ -17,13 +18,18 @@ class KartaPacjenta {
 	string opis;
 	Data data_wizyty;
 	int il_wizyt;
-	int miesiac;
+	
+
+	KartaPacjenta(int id_kar) {
+		id_karty = id_kar;
+
+	}
 };
 
 class Recepta {
 	int id;
 	string przepisane_lekarstwo;
-	Pacjent pacjnet;
+	//Pacjent pacjent;
 	Data data_wystawienia;
 };
 
@@ -34,7 +40,7 @@ class Platnosc {
 
 class Ubezpieczenie : public Platnosc {
 	int nr_ubezp;
-	Pacjent osoba_ubez;
+	//Pacjent osoba_ubez;
 };
 
 class Prywatne : public Platnosc {
@@ -52,5 +58,5 @@ class Harmonogram {
 };
 
 class wizyta {
-	Pacjent pacjent;
+	//Pacjent pacjent;
 };

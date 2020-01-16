@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "objectsclass.h"
 
 // 
 
@@ -23,14 +24,18 @@ public:
 
 
 class Pacjent : public Osoba {
-	int pesel;
-	int nr_karty_pacjenta;
 
-	Pacjent(string Im, string Naz, string adr, int nr_t , int pesel,int nr_k)
-		: Osoba( Im, Naz, adr, nr_t), 
-			pesel(pesel),
-				nr_karty_pacjenta(nr_k) 
-			{}
+
+public:
+	int pesel;
+	int karta_pacjenta;
+
+	Pacjent(string Im, string Naz, string adr, int nr_t, int pesel)
+		: Osoba(Im, Naz, adr, nr_t),
+		pesel(pesel)
+			{
+	karta_pacjenta = 1;
+	}
 	~Pacjent() {
 		cout << "Pacjent usuniêty" << endl;
 	}
