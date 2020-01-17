@@ -24,8 +24,6 @@ void menu(int p) {
 
 		if (log == 1) {
 			
-
-
 			cout << "Pesel: ";
 			cin >> pesel;
 
@@ -44,17 +42,36 @@ void menu(int p) {
 			Pacjent nowy_pacjent(imie, nazwisko, adres, nr_tel, pesel);
 			fstream file;
 			file.open("bazapacjentow.txt", ios::out | ios::app);
-			file << nowy_pacjent.pesel << endl;
+			file << nowy_pacjent.pesel << "\t";
 			//file << nowy_pacjent.karta_pacjenta << endl;
 			file << nowy_pacjent.Imie << "\t";
 			file << nowy_pacjent.Nazwisko << "\t";
 			file << nowy_pacjent.adres << "\t";
-			file << nowy_pacjent.nr_tel << "\t";
+			file << nowy_pacjent.nr_tel << endl;
 			file.close();
 		}
 		else if (log == 2) {
 			cin >> pesel;
-
+			string linia,im,naz;
+			
+			fstream file2;
+			file2.open("bazapacjentow.txt", ios::in | ios::app);
+			if (file2.good() == true)
+			{													//Pszeszukiwanie pliku
+				while (!file2.eof())
+				{
+					getline(file2, linia,'\t');
+					
+					if (linia == to_string(pesel)) {			//jezeli pesel sie zgadza to wyswietl im i naz
+						
+						getline(file2, im, '\t');				
+						getline(file2, naz, '\t');
+						cout << im + ' ' + naz << endl;
+					}
+				}
+				//cout << "Pacjenta nie znaleziono" << endl;
+				file2.close();
+			}
 		}
 
 		cout << "1.Umow wizyte" << endl;
