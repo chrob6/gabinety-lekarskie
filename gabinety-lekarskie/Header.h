@@ -30,11 +30,12 @@ public:
 	int pesel;
 	int karta_pacjenta;
 
-	Pacjent(string Im, string Naz, string adr, int nr_t, int pesel)
+	Pacjent(string Im, string Naz, string adr, int nr_t, int pesel,int k_p)
 		: Osoba(Im, Naz, adr, nr_t),
-		pesel(pesel)
+		pesel(pesel),
+		karta_pacjenta(k_p)
 			{
-	karta_pacjenta = 1;
+	//karta_pacjenta = 1;
 	}
 	~Pacjent() {
 		cout << "Pacjent usuniêty" << endl;

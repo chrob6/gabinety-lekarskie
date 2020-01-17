@@ -7,6 +7,7 @@
 
 
 
+
 using namespace std;
 
 void menu(int p) {
@@ -15,7 +16,7 @@ void menu(int p) {
 		// pacjent
 		string imie, nazwisko, adres;
 		int nr_tel, pesel, log;
-
+		string dane;
 		cout << "Logowanie jako pacjent" << endl;
 
 		cout << "1.Rejestracja"<< endl;
@@ -23,7 +24,21 @@ void menu(int p) {
 		cin >> log;
 
 		if (log == 1) {
+			fstream nr_k_p;
+			int i=0;
 			
+			nr_k_p.open("bazapacjentow.txt", ios::in | ios::app);
+			if (nr_k_p.good() == true) {
+				while (!nr_k_p.eof())
+				{
+					getline(nr_k_p, dane);
+					//cout << dane << endl;
+					i++;
+				}
+
+				nr_k_p.close();
+			}
+			cout << "Twoj ID to: " << i << endl;
 			cout << "Pesel: ";
 			cin >> pesel;
 
@@ -39,11 +54,11 @@ void menu(int p) {
 			cout << "Adres: ";
 			cin >> adres;
 
-			Pacjent nowy_pacjent(imie, nazwisko, adres, nr_tel, pesel);
+			Pacjent nowy_pacjent(imie, nazwisko, adres, nr_tel, pesel, i);
 			fstream file;
 			file.open("bazapacjentow.txt", ios::out | ios::app);
 			file << nowy_pacjent.pesel << "\t";
-			//file << nowy_pacjent.karta_pacjenta << endl;
+			file << nowy_pacjent.karta_pacjenta << '\t';
 			file << nowy_pacjent.Imie << "\t";
 			file << nowy_pacjent.Nazwisko << "\t";
 			file << nowy_pacjent.adres << "\t";
@@ -52,22 +67,24 @@ void menu(int p) {
 		}
 		else if (log == 2) {
 			cin >> pesel;
-			string linia,im,naz;
-			
+			string linia,pesel2;
 			fstream file2;
+			int poz;
 			file2.open("bazapacjentow.txt", ios::in | ios::app);
 			if (file2.good() == true)
 			{													//Pszeszukiwanie pliku
 				while (!file2.eof())
 				{
-					getline(file2, linia,'\t');
-					
-					if (linia == to_string(pesel)) {			//jezeli pesel sie zgadza to wyswietl im i naz
-						
-						getline(file2, im, '\t');				
-						getline(file2, naz, '\t');
-						cout << im + ' ' + naz << endl;
+					getline(file2, linia,'\n');
+					//poz = linia.find('\t');
+					pesel2 = linia.substr(0, 3);
+					dane = linia.substr(4);
+					if (pesel2 == to_string(pesel)) {			//jezeli pesel sie zgadza to wyswietl 
+						//getline(file2, dane, '\n');
+						cout << dane << endl;
+						break;
 					}
+					
 				}
 				//cout << "Pacjenta nie znaleziono" << endl;
 				file2.close();
