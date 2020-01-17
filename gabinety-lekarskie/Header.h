@@ -20,6 +20,9 @@ public:
 			adres(adr),
 				nr_tel(nr_t) { }
 
+	Osoba():Imie("Jan"),Nazwisko("Nowak"),adres("brak"),nr_tel(0) {
+	}
+
 };
 
 
@@ -30,13 +33,12 @@ public:
 	int pesel;
 	int karta_pacjenta;
 
-	Pacjent(string Im, string Naz, string adr, int nr_t, int pesel,int k_p)
+	Pacjent(string Im, string Naz, string adr, int nr_t, int pesel, int k_p)
 		: Osoba(Im, Naz, adr, nr_t),
 		pesel(pesel),
 		karta_pacjenta(k_p)
-			{
-	//karta_pacjenta = 1;
-	}
+	{}
+	Pacjent() :Osoba(), pesel(111),karta_pacjenta(0){}
 	~Pacjent() {
 		cout << "Pacjent usuniêty" << endl;
 	}

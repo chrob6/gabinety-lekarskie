@@ -1,3 +1,4 @@
 ﻿  Source.cpp
-C:\Users\Pajac\Documents\gabinety-lekarskie\gabinety-lekarskie\Source.cpp(72,8): warning C4101: "poz": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\Pajac\Documents\gabinety-lekarskie\gabinety-lekarskie\Source.cpp(76,18): warning C4101: "dl": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\Pajac\Documents\gabinety-lekarskie\gabinety-lekarskie\Source.cpp(76,13): warning C4101: "poz2": lokalna zmienna, do której nie istnieje odwołanie
   gabinety-lekarskie.vcxproj -> C:\Users\Pajac\Documents\gabinety-lekarskie\x64\Debug\gabinety-lekarskie.exe

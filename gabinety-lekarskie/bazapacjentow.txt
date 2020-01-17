@@ -1,7 +1,7 @@
-123	Marcin	Krobak	string	997
-123	Klaudia	Baran	niepodamci	345
-456	Grzegorz	Cebula	asd	123
-980	Michal	Dziwne	Krakow	4567
+123	1	Marcin	Krobak	string	997
+123	2	Klaudia	Baran	niepodamci	345
+456	3	Grzegorz	Cebula	asd	123
+980	4	Michal	Dziwne	Krakow	4567
 702	5	Ola	Krason	Newstone	999
 992	6	Ala	Jakastam	niemampojecia	666
 

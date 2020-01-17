@@ -30,15 +30,13 @@ void menu(int p) {
 			nr_k_p.open("bazapacjentow.txt", ios::in | ios::app);
 			if (nr_k_p.good() == true) {
 				while (!nr_k_p.eof())
-				{
-					getline(nr_k_p, dane);
-					//cout << dane << endl;
+				{	getline(nr_k_p, dane);
 					i++;
 				}
-
 				nr_k_p.close();
 			}
 			cout << "Twoj ID to: " << i << endl;
+
 			cout << "Pesel: ";
 			cin >> pesel;
 
@@ -64,40 +62,64 @@ void menu(int p) {
 			file << nowy_pacjent.adres << "\t";
 			file << nowy_pacjent.nr_tel << endl;
 			file.close();
+			KartaPacjenta nowa_karta(i, " ");							//Baza kart pacjenta
+			fstream kp_baza;
+			kp_baza.open("bazakart_pacj.txt", ios::out | ios::app);
+			kp_baza << nowa_karta.id_karty << "\t";
+			kp_baza << nowa_karta.opis << endl;
+			kp_baza.close();
 		}
 		else if (log == 2) {
 			cin >> pesel;
 			string linia,pesel2;
 			fstream file2;
-			int poz;
+			int poz1,poz2,dl;
+			poz1 = 4;
+			Pacjent* ist_pacjent = new Pacjent;					//Aktualnie zalogowany pacjent
 			file2.open("bazapacjentow.txt", ios::in | ios::app);
 			if (file2.good() == true)
 			{													//Pszeszukiwanie pliku
 				while (!file2.eof())
-				{
-					getline(file2, linia,'\n');
-					//poz = linia.find('\t');
+				{	getline(file2, linia,'\n');
 					pesel2 = linia.substr(0, 3);
-					dane = linia.substr(4);
+					dane = linia.substr(poz1);
+					
 					if (pesel2 == to_string(pesel)) {			//jezeli pesel sie zgadza to wyswietl 
-						//getline(file2, dane, '\n');
+						pesel = stoi(pesel2);
+						ist_pacjent->pesel = pesel;				//przypisanie peselu
 						cout << dane << endl;
+						//poz2 = dane.find('\t');
+						//dl = poz2 - poz1;
+						//linia = dane.substr(poz2, dl);
+						//cout << dl << poz1 << poz2 << endl;		//Trzeba z reszty stringa wyciac pozostale pola!!!
 						break;
 					}
 					
 				}
 				//cout << "Pacjenta nie znaleziono" << endl;
 				file2.close();
+				
 			}
 		}
 
 		cout << "1.Umow wizyte" << endl;
-		cout << "2.Odwolaj wizyte wizyte" << endl;
+		cout << "2.Odwolaj wizyte" << endl;
 		cout << "3.Zobacz Harmonogram" << endl;
+		cin >> log;
+		if (log == 1) {
+			
+		}
+		else if (log == 2) {
+
+		}
+		else if(log == 3) {
+
+		}
 	}
 	else if (p == 1) {
 		// lekarz
 		cout << "Logowanie jako lekarz" << endl;
+
 		cout << "1.Ustaw terminy przyjec" << endl;
 		cout << "2.Wypisz recepte" << endl;
 		cout << "3.Sprawdz karte pacjenta" << endl;
