@@ -9,14 +9,14 @@ public:
 	int dzien;
 	int miesiac;
 	int rok;
-	//int godzina;
-	//int minuta;
+	int godzina;
+	int minuta;
 	Data() {
-		dzien = 1;
-		miesiac = 1;
-		rok = 2000;
-		//godzina = 0;
-		//minuta = 0;
+		cin >> dzien;
+		cin >> miesiac;
+		cin >> rok;
+		cin >> godzina;
+		cin >> minuta;
 	}
 	//Data(int d,int mi, int r):dzien(d),miesiac(mi),rok(r){} 
 };
@@ -26,21 +26,25 @@ class KartaPacjenta {
 public:
 	int id_karty;
 	string opis;
+	//wizyta wizyta;
 	//Data data_wizyty;
-	//int il_wizyt;
+	int il_wizyt=0;
 	
-
-	KartaPacjenta(int id_k, string o):id_karty(id_k),opis(o) {
+	KartaPacjenta(int id_k, string o):id_karty(id_k),opis(o) {	
+		il_wizyt++;
 	}
 };
+//int KartaPacjenta::il_wizyt = 0;
 
 class Recepta {
+public:
 	int id;
 	string przepisane_lekarstwo;
 	//Pacjent pacjent;
 	Data data_wystawienia;
-	Recepta(int i, string prz_lek, Data d):id(i),przepisane_lekarstwo(prz_lek){
-		data_wystawienia = d;
+	Recepta(int i, string prz_lek):id(i),przepisane_lekarstwo(prz_lek),data_wystawienia(){
+		//data_wystawienia = d;
+		//pacjent = pac;
 	}
 };
 
@@ -55,27 +59,41 @@ public:
 class Ubezpieczenie : public Platnosc {
 	int nr_ubezp;
 	//Pacjent osoba_ubez;
-	Ubezpieczenie(bool pl,double kw, int nr):Platnosc(pl,kw),nr_ubezp(nr){}
+	Ubezpieczenie(bool pl,double kw, int nr):Platnosc(pl,kw),nr_ubezp(nr){
+	}
 };
 
 class Prywatne : public Platnosc {
-	//int kwota;
-	Prywatne(bool pl, double kw) :Platnosc(pl, kw){}
+	//double kwota;
+	Prywatne(bool pl, double kw) :Platnosc(pl, kw){
+	}
 };
 
 class Paragon {
-	int kwota;
+	double kwota;
 	Data data;
-	Paragon(int kw, Data d):kwota(kw),data(d) {
+	Paragon(double kw):kwota(kw),data() {
 	}
 };
 
 class Harmonogram {
-	Data termin;
+	Data termin[10];
+	static int i;
+	Harmonogram(Data d) {
+		termin[i] = d;
+		i++;
+		if (i == 9)i = 1;
+	}
 
 };
+//int Harmonogram::i = 0;
 
-class wizyta {
-	//Pacjent pacjent;
+class Wizyta {
+	int id_kart_pacj;
+	int id_lekarz;
+	Data data_wizyty;
+
+	Wizyta(int id,int l):id_kart_pacj(id),id_lekarz(l),data_wizyty(){
+	}
 
 };

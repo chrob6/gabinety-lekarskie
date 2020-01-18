@@ -5,3 +5,4 @@
 702	5	Ola	Krason	Newstone	999
 992	6	Ala	Jakastam	niemampojecia	666
 
+988	8	Mati	Bak	lc	777

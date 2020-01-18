@@ -6,7 +6,8 @@
 #include "objectsclass.h"
 
 
-
+//int KartaPacjenta::il_wizyt = 0;
+int Harmonogram::i = 0;
 
 using namespace std;
 
@@ -62,7 +63,7 @@ void menu(int p) {
 			file << nowy_pacjent.adres << "\t";
 			file << nowy_pacjent.nr_tel << endl;
 			file.close();
-			KartaPacjenta nowa_karta(i, " ");							//Baza kart pacjenta
+			KartaPacjenta nowa_karta(i, "opis");							//Baza kart pacjenta
 			fstream kp_baza;
 			kp_baza.open("bazakart_pacj.txt", ios::out | ios::app);
 			kp_baza << nowa_karta.id_karty << "\t";
