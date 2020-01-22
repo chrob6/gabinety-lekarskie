@@ -112,6 +112,25 @@ void menu(int p) {
 
 		cin >> log;
 
+		string linia;
+		fstream plik1;
+
+		plik1.open("bazalekarzynowa.txt", ios::in);
+		if (plik1.good() == true)
+		{
+			while (!plik1.eof())
+			{
+				getline(plik1, linia);
+				cout << linia << " ";
+				getline(plik1, linia);
+				cout << linia << " ";
+				getline(plik1, linia);
+				cout << linia << " ";
+				getline(plik1, linia);
+				cout << linia << endl;
+			}
+			plik1.close();
+		}
 
 		if (log == 1) {
 			Wizyta nowa_wizyta(id_kp, id_lek);
