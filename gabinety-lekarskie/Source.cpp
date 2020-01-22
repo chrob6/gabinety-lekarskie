@@ -12,7 +12,7 @@ int Harmonogram::i = 0;
 using namespace std;
 
 void menu(int p) {
-
+	string idstr;
 	if (p == 0) {
 		// pacjent
 		string imie, nazwisko, adres;
@@ -74,21 +74,21 @@ void menu(int p) {
 			cin >> pesel;
 			string linia,pesel2;
 			fstream file2;
-			int poz1,poz2,dl;
-			poz1 = 4;
+			int poz1=4;
 			Pacjent* ist_pacjent = new Pacjent;					//Aktualnie zalogowany pacjent
 			file2.open("bazapacjentow.txt", ios::in | ios::app);
 			if (file2.good() == true)
 			{													//Pszeszukiwanie pliku
 				while (!file2.eof())
 				{	getline(file2, linia,'\n');
-					pesel2 = linia.substr(0, 3);
-					dane = linia.substr(poz1);
+					pesel2 = linia.substr(0, 3);				//porównanie 3 pierwszych znaków
+					dane = linia.substr(poz1);					//czemu 3? to tylko przyk³adowo :D
 					
 					if (pesel2 == to_string(pesel)) {			//jezeli pesel sie zgadza to wyswietl 
 						pesel = stoi(pesel2);
 						ist_pacjent->pesel = pesel;				//przypisanie peselu
 						cout << dane << endl;
+						idstr = dane.substr(0, 1);
 						//poz2 = dane.find('\t');
 						//dl = poz2 - poz1;
 						//linia = dane.substr(poz2, dl);
@@ -102,13 +102,25 @@ void menu(int p) {
 				
 			}
 		}
+		int id_kp,id_lek;
+		id_lek = 0;				//Potrzebna bazy lekarza!!!
+		id_kp = stoi(idstr);
 
 		cout << "1.Umow wizyte" << endl;
 		cout << "2.Odwolaj wizyte" << endl;
 		cout << "3.Zobacz Harmonogram" << endl;
+
 		cin >> log;
+
+
 		if (log == 1) {
-			
+			Wizyta nowa_wizyta(id_kp, id_lek);
+			fstream wiz_baza;
+			wiz_baza.open("baza_wizyt.txt", ios::out | ios::app);
+			wiz_baza << nowa_wizyta.id_kart_pacj << "\t";
+			wiz_baza << nowa_wizyta.id_lekarz << "\t";
+			wiz_baza << nowa_wizyta.data_wizyty << "\t";
+			wiz_baza.close();
 		}
 		else if (log == 2) {
 

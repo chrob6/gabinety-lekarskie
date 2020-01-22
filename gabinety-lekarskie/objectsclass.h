@@ -19,8 +19,13 @@ public:
 		cin >> minuta;
 	}
 	//Data(int d,int mi, int r):dzien(d),miesiac(mi),rok(r){} 
+	friend ostream& operator<<(ostream& os, const Data& dt);
 };
 
+ostream& operator<<(ostream& os, const Data& dt) {
+	os << dt.dzien << "," << dt.miesiac << "," << dt.rok << " " << dt.godzina << ":" << dt.minuta;
+	return os;
+}
 
 class KartaPacjenta {
 public:
@@ -89,11 +94,15 @@ class Harmonogram {
 //int Harmonogram::i = 0;
 
 class Wizyta {
+public:
 	int id_kart_pacj;
 	int id_lekarz;
 	Data data_wizyty;
 
 	Wizyta(int id,int l):id_kart_pacj(id),id_lekarz(l),data_wizyty(){
 	}
-
+	
 };
+
+
+
