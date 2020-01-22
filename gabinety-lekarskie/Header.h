@@ -98,6 +98,86 @@ class Lekarz : public Osoba {
 		cout << "Lekarz usuniêty" << endl;
 	}
 
+	void Ustaw_terminy() {
+		Harmonogram Harm_lek(id_lekarza);
+		fstream ter_baza;
+		ter_baza.open("baza_Harm.txt", ios::out | ios::app);
+		ter_baza << Harm_lek;
+		ter_baza.close();
+		//return 0;
+	}
+
+	void Wypisz_recepte() {
+		string linia;
+		int id_p;
+		cin >> id_p;
+		Recepta* nowa_recepta = new Recepta;
+		fstream baza_pacj;
+		baza_pacj.open("baza_recept.txt", ios::in | ios::app);
+		if (baza_pacj.good() == true)
+		{													//Pszeszukiwanie pliku
+			while (!baza_pacj.eof())
+			{
+				getline(baza_pacj, linia, '\n');
+
+				if (to_string(id_p) == linia) {			//jezeli pesel sie zgadza to wyswietl 
+					baza_pacj.close();
+					//Recepta nowa_recepta();
+					fstream Rec_baza;
+					Rec_baza.open("baza_recept.txt", ios::out | ios::app);
+					cin >> nowa_recepta->id;
+					Rec_baza << nowa_recepta->id << endl;
+
+					nowa_recepta->id_lek = id_lekarza;
+					Rec_baza << nowa_recepta->id_lek << endl;
+
+					nowa_recepta->id_pacj = id_p;
+					Rec_baza << nowa_recepta->id_pacj << endl;
+
+					cin >> nowa_recepta->przepisane_lekarstwo;
+					Rec_baza << nowa_recepta->przepisane_lekarstwo << endl;
+
+					//nowa_recepta->data_wystawienia;
+					Rec_baza << nowa_recepta->data_wystawienia << endl;
+					Rec_baza.close();
+					break;
+				}
+
+			}
+
+		}
+
+	}
+
+	void Sprawdz_Karte() {
+		string linia, decyzja;
+		int id_p;
+		cin >> id_p;
+		fstream baza_kart;
+		baza_kart.open("bazakart_pacj.txt", ios::in | ios::app | ios::out);
+		if (baza_kart.good() == true)
+		{													//Pszeszukiwanie pliku
+			while (!baza_kart.eof())
+			{
+				getline(baza_kart, linia, '\n');
+
+				if (to_string(id_p) == linia) {			//jezeli pesel sie zgadza to wyswietl 
+					getline(baza_kart, linia, '\n');
+					cout << linia << endl;
+					cout << "Czy chcesz zmieniæ opis ?(male litery)" << endl;
+					cin >> decyzja;
+					if (decyzja == "tak") {
+						cin >> linia;
+						baza_kart << linia
+					}
+					baza_kart.close();
+					break;
+				}
+
+			}
+
+		}
+	}
 };
 
 class Pielegniarka: public Osoba {

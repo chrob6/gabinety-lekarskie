@@ -47,7 +47,11 @@ public:
 	string przepisane_lekarstwo;
 	//Pacjent pacjent;
 	Data data_wystawienia;
-	Recepta(int i, string prz_lek):id(i),przepisane_lekarstwo(prz_lek),data_wystawienia(){
+	int id_pacj;
+	int id_lek;
+	Data data_wystawienia;
+	Recepta() :id(0), przepisane_lekarstwo("brak"), id_lek(0), id_pacj(0), data_wystawienia() {}
+	Recepta(int i, string prz_lek, int id_p, int id_l) :id(i), przepisane_lekarstwo(prz_lek), data_wystawienia(), id_pacj(id_p), id_lek(id_l) {
 		//data_wystawienia = d;
 		//pacjent = pac;
 	}
@@ -94,18 +98,35 @@ public:
 };
 
 class Harmonogram {
-	Data termin[10];
-	static int i;
-	Harmonogram(Data d) {
-		termin[i] = d;
-		i++;
-		if (i == 9)i = 1;
+public:
+	int termin[5][2];
+	int id;
+	Harmonogram(int id_lek) {
+		int j = 0;
+		//int czas;
+		for (int i = 0; i = 4; i++) {
+			for (j; j = 1; j++) {
+				cin >> termin[i][j];
+			}
+			j = 0;
+		}
+		id = id_lek;
 	}
-
+	friend ostream& operator<<(ostream& os, const Harmonogram& H);
 };
-//int Harmonogram::i = 0;
+
+ostream& operator<<(ostream& os, const Harmonogram& H) {
+	os << H.id << endl;
+	os << "poniedzia³ek" << H.termin[0][0] << "/" << H.termin[0][1] << endl;
+	os << "Wtorek" << H.termin[1][0] << "/" << H.termin[1][1] << endl;
+	os << "Œroda" << H.termin[2][0] << "/" << H.termin[2][1] << endl;
+	os << "czwartekk" << H.termin[3][0] << "/" << H.termin[3][1] << endl;
+	os << "piatek" << H.termin[4][0] << "/" << H.termin[4][1] << endl;
+	return os;
+}
 
 class Wizyta {
+public:
 	int id_kart_pacj;
 	int id_lekarz;
 	Data data_wizyty;
