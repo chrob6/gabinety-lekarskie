@@ -18,7 +18,6 @@ public:
 		cin >> godzina;
 		cin >> minuta;
 	}
-	//Data(int d,int mi, int r):dzien(d),miesiac(mi),rok(r){} 
 	friend ostream& operator<<(ostream& os, const Data& dt);
 };
 
@@ -26,6 +25,7 @@ ostream& operator<<(ostream& os, const Data& dt) {
 	os << dt.dzien << "," << dt.miesiac << "," << dt.rok << " " << dt.godzina << ":" << dt.minuta;
 	return os;
 }
+
 
 class KartaPacjenta {
 public:
@@ -61,6 +61,8 @@ public:
 	Platnosc(bool pl, double kw):typ_platnosci(pl),kwota(kw){}
 };
 
+
+/*
 class Ubezpieczenie : public Platnosc {
 	int nr_ubezp;
 	//Pacjent osoba_ubez;
@@ -73,11 +75,21 @@ class Prywatne : public Platnosc {
 	Prywatne(bool pl, double kw) :Platnosc(pl, kw){
 	}
 };
+*/
 
 class Paragon {
-	double kwota;
-	Data data;
-	Paragon(double kw):kwota(kw),data() {
+public:
+	int kwota;
+
+	Paragon(int kw) {
+		kwota = kw;
+	}
+
+	void PrintParagon() {
+
+		cout << "Paragon" << endl;
+		cout << kwota << endl;
+		cout << "1 stycznia";
 	}
 };
 
@@ -94,15 +106,11 @@ class Harmonogram {
 //int Harmonogram::i = 0;
 
 class Wizyta {
-public:
 	int id_kart_pacj;
 	int id_lekarz;
 	Data data_wizyty;
 
 	Wizyta(int id,int l):id_kart_pacj(id),id_lekarz(l),data_wizyty(){
 	}
-	
+
 };
-
-
-

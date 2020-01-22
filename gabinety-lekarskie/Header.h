@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include "objectsclass.h"
+#include <fstream>
+
 
 // 
 
@@ -43,6 +45,43 @@ public:
 		cout << "Pacjent usuniêty" << endl;
 	}
 
+	void Zarejestruj(int i) {
+
+		fstream file;
+		file.open("bazapacjentow.txt", ios::out | ios::app);
+		file << pesel << "\t";
+		file << i << '\t';
+		file << Imie << "\t";
+		file << Nazwisko << "\t";
+		file << adres << "\t";
+		file << nr_tel << endl;
+		file.close();
+		KartaPacjenta nowa_karta(i, "opis");							//Baza kart pacjenta
+		fstream kp_baza;
+		kp_baza.open("bazakart_pacj.txt", ios::out | ios::app);
+		kp_baza << nowa_karta.id_karty << "\t";
+		kp_baza << nowa_karta.opis << endl;
+		kp_baza.close();
+	}
+
+	void logowanie() {
+
+
+
+
+	}
+
+	bool zaplac_za_wizyte(int cena) {
+		int kwota;
+		
+		cout << "Kwota do zaplaty: " << cena << endl;
+		cin >> kwota;
+		if (kwota == cena) {
+			return true;
+		}
+		return false;
+	}
+
 };
 
 class Lekarz : public Osoba {
@@ -68,10 +107,31 @@ class Pielegniarka: public Osoba {
 
 };
 
-class Obsluga: public Osoba {
 
+
+class Obsluga: public Osoba {
+public:
+	/*
 	Obsluga(string Im, string Naz, string adr, int nr_t)
 		: Osoba(Im, Naz, adr, nr_t) {}
+		*/
+
+
+	void potwierdzenie_platnosci(bool iftrue) {
+		if (iftrue) {
+			cout << "potwierdzam zaplate" << endl;
+			return;
+		}
+		else cout << "zla kwota";
+
+
+
+	}
+
+
+
+	
+
 
 };
 
