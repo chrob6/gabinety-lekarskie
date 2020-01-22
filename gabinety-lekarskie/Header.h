@@ -85,15 +85,17 @@ public:
 };
 
 class Lekarz : public Osoba {
+public:
 	int id_lekarza;
-	int nr_gabinetu;
+	//int nr_gabinetu;
 	string specjalizacja;
 
-	Lekarz(string Im, string Naz, string adr, int nr_t, int id_l, int nr_g, string spec)
+	Lekarz(string Im, string Naz, string adr, int nr_t, int id_l, string spec)
 		: Osoba(Im, Naz, adr, nr_t), 
 		id_lekarza(id_l), 
-			nr_gabinetu(nr_g), 
+			//nr_gabinetu(nr_g), 
 				specjalizacja(spec){}
+	Lekarz() :Osoba(), id_lekarza(0), specjalizacja("brak") {}
 	~Lekarz() {
 		cout << "Lekarz usuniêty" << endl;
 	}
@@ -168,7 +170,7 @@ class Lekarz : public Osoba {
 					cin >> decyzja;
 					if (decyzja == "tak") {
 						cin >> linia;
-						baza_kart << linia
+						baza_kart << linia;
 					}
 					baza_kart.close();
 					break;

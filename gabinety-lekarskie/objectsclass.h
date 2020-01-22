@@ -49,7 +49,7 @@ public:
 	Data data_wystawienia;
 	int id_pacj;
 	int id_lek;
-	Data data_wystawienia;
+	//Data data_wystawienia;
 	Recepta() :id(0), przepisane_lekarstwo("brak"), id_lek(0), id_pacj(0), data_wystawienia() {}
 	Recepta(int i, string prz_lek, int id_p, int id_l) :id(i), przepisane_lekarstwo(prz_lek), data_wystawienia(), id_pacj(id_p), id_lek(id_l) {
 		//data_wystawienia = d;

@@ -7,7 +7,7 @@
 
 
 //int KartaPacjenta::il_wizyt = 0;
-int Harmonogram::i = 0;
+//int Harmonogram::i = 0;
 
 using namespace std;
 
@@ -141,13 +141,13 @@ void menu(int p) {
 
 		cin >> log;
 		if (log == 1) {
-			Wizyta nowa_wizyta(id_kp, id_lek);
+			/*Wizyta nowa_wizyta(id_kp, id_lek);
 			fstream wiz_baza;
 			wiz_baza.open("baza_wizyt.txt", ios::out | ios::app);
 			wiz_baza << nowa_wizyta.id_kart_pacj << "\t";
 			wiz_baza << nowa_wizyta.id_lekarz << "\t";
 			wiz_baza << nowa_wizyta.data_wizyty << "\t";
-			wiz_baza.close();
+			wiz_baza.close();*/
 		}
 		else if (log == 2) {
 
@@ -180,7 +180,7 @@ void menu(int p) {
 	fstream lek_baza;
 	int poz1 = 4;
 	Lekarz* akt_lekarz = new Lekarz;					//Aktualnie zalogowany pacjent
-	lek_baza.open("bazapacjentow.txt", ios::in | ios::app);
+	lek_baza.open("bazalekarzynowa.txt", ios::in | ios::app);
 	if (lek_baza.good() == true)
 	{													//Pszeszukiwanie pliku
 		while (!lek_baza.eof())

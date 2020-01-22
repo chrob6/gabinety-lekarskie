@@ -1,3 +1,4 @@
 ﻿  Source.cpp
-  LINK : nie znaleziono elementu C:\Users\natal\Desktop\git\gabinety-lekarskie\x64\Debug\gabinety-lekarskie.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
-  gabinety-lekarskie.vcxproj -> C:\Users\natal\Desktop\git\gabinety-lekarskie\x64\Debug\gabinety-lekarskie.exe
+C:\Users\Pajac\Documents\gabinety-lekarskie\gabinety-lekarskie\Source.cpp(87,18): warning C4101: "dl": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\Pajac\Documents\gabinety-lekarskie\gabinety-lekarskie\Source.cpp(87,13): warning C4101: "poz2": lokalna zmienna, do której nie istnieje odwołanie
+LINK : fatal error LNK1201: błąd zapisu do bazy danych „C:\Users\Pajac\Documents\gabinety-lekarskie\x64\Debug\gabinety-lekarskie.pdb” programu; sprawdź, czy ilość miejsca na dysku jest wystarczająca, czy ścieżka jest prawidłowa i czy uprawnienia są wystarczające
